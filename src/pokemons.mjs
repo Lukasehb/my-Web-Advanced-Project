@@ -9,29 +9,44 @@ const routes = {
   pokemons: async () => {
     const app = document.getElementById('app');
     app.innerHTML = '<h1>Loading Pokémons...</h1>';
-    
-
+  
     try { 
       const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
       const data = await response.json();
       const pokemons = data.results;
-      
-
+  
       let html = '<h1>Pokémons</h1>';
-      html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon.."></input>';
+      html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon..">';
       html += '<ul id="pokeUL">';
-
-      pokemons.forEach(pokemon => {
-        html += `<li><a href="#pokemon-${pokemon.name}">${pokemon.name}</a></li>`;
+  
+      // Fetch all details in parallel for performance
+      const detailedPokemons = await Promise.all(
+        pokemons.map(async (pokemon) => {
+          const res = await fetch(pokemon.url);
+          return await res.json();
+        })
+      );
+  
+      // Build HTML with images
+      detailedPokemons.forEach(pokemon => {
+        html += `
+          <li>
+            <a href="#pokemon-${pokemon.name}">
+              <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+              ${pokemon.name}
+            </a>
+          </li>`;
       });
+  
       html += '</ul>';
-
       app.innerHTML = html;
+  
     } catch (error) {
       app.innerHTML = '<p>Error loading Pokémons.</p>';
       console.error(error);
     }
   }
+  
 };
 
 
