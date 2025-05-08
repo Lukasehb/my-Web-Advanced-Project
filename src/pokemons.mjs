@@ -19,7 +19,7 @@ const routes = {
       html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon..">';
       html += '<ul id="pokeUL">';
   
-      // Fetch all details in parallel for performance
+      
       const detailedPokemons = await Promise.all(
         pokemons.map(async (pokemon) => {
           const res = await fetch(pokemon.url);
@@ -27,7 +27,7 @@ const routes = {
         })
       );
   
-      // Build HTML with images
+      
       detailedPokemons.forEach(pokemon => {
         html += `
           <li>
@@ -63,6 +63,7 @@ async function loadPokemonDetail(name) {
       <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
       <p>Height: ${pokemon.height}</p>
       <p>Weight: ${pokemon.weight}</p>
+      <input type="button" value="Ad to favorite">
       <a href="#pokemons">← Back to list</a>
     `;
   } catch (error) {
