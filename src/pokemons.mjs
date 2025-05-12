@@ -39,6 +39,7 @@ const routes = {
               <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
               <strong>${pokemon.name}</strong><br>
               <small>Type: ${types}</small>
+              <small>pokémonnummer: ${pokemon.id}</small>
             </a>
           </li>`;
       });
@@ -99,6 +100,7 @@ async function loadPokemonDetail(name) {
     <h1>${pokemon.name}</h1>
     <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
     <p><strong>Type:</strong> ${types}</p>
+    <p>pokémonnummer: ${pokemon.id}<p>
     <div class="bottom-section">
     <p>Height: ${pokemon.height}</p>
     <p>Weight: ${pokemon.weight}</p>
