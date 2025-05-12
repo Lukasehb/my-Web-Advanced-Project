@@ -21,7 +21,7 @@ const routes = {
       const pokemons = data.results;
 
       let html = '<h1>Pokémons</h1>';
-      html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon..">';
+      html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon/type..">';
       html += '<ul id="pokeUL">';
 
       const detailedPokemons = await Promise.all(
@@ -38,7 +38,7 @@ const routes = {
             <a href="#pokemon-${pokemon.name}">
               <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
               <strong>${pokemon.name}</strong><br>
-              <small>Type: ${types}</small>
+              <small>Type: ${types}\n</small>
               <small>pokémonnummer: ${pokemon.id}</small>
             </a>
           </li>`;
@@ -57,9 +57,8 @@ const routes = {
     const app = document.getElementById('app');
     const favorites = getFavorites();
     let html = '<h1>Loading favorite pokémons...</h1>';
-    html += '<p><a href="#pokemons">← Back to list</a></p>';
+    html += '<p><a href="#pokemons">← Back to the pokémonlist</a></p>';
     try {
-
       let html = '<h1>My Favorite Pokémons</h1>';
           app.innerHTML = html;
        if (favorites.length === 0) {
@@ -72,8 +71,8 @@ const routes = {
       favorites.forEach(pokemon => {
         html += `
           <li>
-            <img src="${pokemon.sprite}" alt="${pokemon.name}">
-            ${pokemon.name}
+            <img src="${pokemon.sprite}" alt="${pokemon.name}"> <div class="pokémonfav">${pokemon.name}test<div>
+  
           <button onclick="removeFavorite('${pokemon.name}')">Remove from favorites</button>
           </li>`;
       });
@@ -104,6 +103,7 @@ async function loadPokemonDetail(name) {
     <div class="bottom-section">
     <p>Height: ${pokemon.height}</p>
     <p>Weight: ${pokemon.weight}</p>
+    <p id="favorite"> <p>
           </div>
     <button onclick='addFavorite(${JSON.stringify({
       name: pokemon.name,
@@ -131,7 +131,7 @@ function router() {
 }
 
 window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+
 
 function myFunction() {
   var input, filter, ul, li, a, i, txtValue;
@@ -163,9 +163,9 @@ function addFavorite(pokemon) {
   if (!favorites.some(p => p.name === pokemon.name)) {
     favorites.push(pokemon);
     saveFavorites(favorites);
-    alert(`${pokemon.name} added to favorites!`);
+    favorite.textContent = "added to favorites"
   } else {
-    alert(`${pokemon.name} is already in favorites!`);
+    favorite.textContent = "This pokémon is already in your favorites"
   }
 }
 
@@ -174,6 +174,6 @@ function removeFavorite(name) {
   saveFavorites(favorites);
   routes.favorites();
   setTimeout(() => {
-    window.location.hash = "#favorites";
+    window.location.hash = "favorites";
   }, 0);
 }
