@@ -1,16 +1,67 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(
+      to bottom,
+      #ee1515 0%,     /* Red */
+      #ee1515 45%,
+      #000 45%,       /* Black */
+      #000 55%,
+      #ffffff 55%     /* White */
+    );
+    min-height: 100vh;
+  }
+  
+  .top-section {
+    padding: 2rem;
+    color: white;       /* White text for red/black area */
+    text-align: center;
+  }
+  
+  .bottom-section {
+    padding: 2rem;
+    color: black;       /* Black text for white area */
+    text-align: center;
+  }
+  
+  #app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ddd;
+    min-height: 100vh; 
+  }
+
+
 #pokeUL {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 16px;
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
-
-  #pokeUL li a {
+  
+  #pokeUL li {
     border: 1px solid #ddd;
-    margin-top: -1px; 
-    background-color: #f6f6f6; 
-    padding: 12px; 
-    text-decoration: none; 
-    font-size: 18px; 
-    color: black; 
-    display: block; 
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
   }
+  
+  #pokeUL li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+  
+  #pokeUL li img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 8px;
+  }
+  
