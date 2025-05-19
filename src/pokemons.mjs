@@ -71,7 +71,7 @@ const routes = {
       favorites.forEach(pokemon => {
         html += `
           <li>
-            <img src="${pokemon.sprite}" alt="${pokemon.name}"> <div class="pokémonfav">${pokemon.name}test<div>
+            <img src="${pokemon.sprite}" alt="${pokemon.name}"> <div class="pokémonfav">${pokemon.name}<div>
   
           <button onclick="removeFavorite('${pokemon.name}')">Remove from favorites</button>
           </li>`;
@@ -177,3 +177,16 @@ function removeFavorite(name) {
     window.location.hash = "favorites";
   }, 0);
 }
+
+const mobile = window.matchMedia('(max-width: 768px)');
+
+function handleResize(e) {
+  if (e.matches) {
+    console.log('Mobile layout');
+  } else {
+    console.log('Desktop layout');
+  }
+}
+
+mobile.addEventListener('change', handleResize);
+handleResize(mobile);

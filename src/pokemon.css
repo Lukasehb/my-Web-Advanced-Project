@@ -74,4 +74,25 @@ body {
     display: block;
     margin: 0 auto 8px;
   }
+
+  .navigate a {
+    /*https://stackoverflow.com/questions/11323813/how-to-outline-text-in-html-css*/
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #ffcb05;
+    text-shadow:
+      -2px -2px 0 #2a75bb,
+       2px -2px 0 #2a75bb,
+      -2px  2px 0 #2a75bb,
+       2px  2px 0 #2a75bb;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0 1rem;
+    display: inline-block;
+  }
+
+  
+  
+
+  
   
