@@ -34,7 +34,7 @@ const routes = {  //routes zoals gezien in de voor laatste les van web-advanced
       detailedPokemons.forEach(pokemon => { // voor elke pokemon voort hij dit uit dus 151 keer
         const types = pokemon.types.map(t => t.type.name).join(', ');
         html += `
-          <li> zet elke pokemon in een lijst
+          <li> 
             <a href="#pokemon-${pokemon.name}">
               <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
               <strong>${pokemon.name}</strong><br>
