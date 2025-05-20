@@ -31,29 +31,29 @@ const routes = {  //routes zoals gezien in de voor laatste les van web-advanced
         })
       );
 
-      detailedPokemons.forEach(pokemon => {
+      detailedPokemons.forEach(pokemon => { // voor elke pokemon voort hij dit uit dus 151 keer
         const types = pokemon.types.map(t => t.type.name).join(', ');
         html += `
-          <li>
+          <li> zet elke pokemon in een lijst
             <a href="#pokemon-${pokemon.name}">
               <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
               <strong>${pokemon.name}</strong><br>
               <small>Type: ${types}\n</small>
               <small>pokémonnummer: ${pokemon.id}</small>
             </a>
-          </li>`;
+          </li>`;//de naam, sprite, type en id komt in een list pokemons zijn klikbaar als op pokemon klick resultaat is (http://localhost:5173/#pokemon-ivysaur)
       });
 
       html += '</ul>';
       app.innerHTML = html;
 
-    } catch (error) {
+    } catch (error) { // indien dat er fout is met de pokemon api aan te roepen vangt hij deze fout op
       app.innerHTML = '<p>Error loading Pokémons.</p>';
       console.error(error);
     }
   },
 
-  favorites:() => {
+  favorites:() => {// de pagina favorite zodat gebruiker favorite kan toevoegen
     const app = document.getElementById('app');
     const favorites = getFavorites();
     let html = '<h1>Loading favorite pokémons...</h1>';
@@ -62,13 +62,14 @@ const routes = {  //routes zoals gezien in de voor laatste les van web-advanced
       let html = '<h1>My Favorite Pokémons</h1>';
           app.innerHTML = html;
        if (favorites.length === 0) {
-      html += ' <div class="bottom-section"><p>No favorites yet. <a href="#pokemons">Go catch some!!</p></div>';
+      html += ' <div class="bottom-section"><p>No favorites yet. <a href="#pokemons">Go catch some!!</p></div>'; //als er nog geen fouten zijn geeft een link van de pokemon pagina
       
       app.innerHTML = html;
       return;
     } else {
       html += '<ul>';
-      favorites.forEach(pokemon => {
+      favorites.forEach(pokemon => { //net zoals pokemon pagina een lijst met pokemons dat zijn toegevoegd aan de favorite
+        //enkel sprite en naam van de pokemon
         html += `
           <li>
             <img src="${pokemon.sprite}" alt="${pokemon.name}"> 
@@ -79,6 +80,7 @@ const routes = {  //routes zoals gezien in de voor laatste les van web-advanced
       });
       html += '</ul>';
       app.innerHTML = html;
+      //verwijderknop om de pokemons te verwijderen van de lijst
       document.querySelectorAll('.remove-fav-btn').forEach(button => {
         button.addEventListener('click', (e) => {
           const name = e.target.getAttribute('data-name');
@@ -93,11 +95,11 @@ const routes = {  //routes zoals gezien in de voor laatste les van web-advanced
   }
 };
 
-async function loadPokemonDetail(name) {
+async function loadPokemonDetail(name) {//pokemon word geklikt en deze pagina word opgeroepen
   const app = document.getElementById('app');
   app.innerHTML = '<h1>Loading Pokémon details...</h1>';
 
-  try {
+  try { // haalt de api nog een keer op voor alles plus het gewicht en hoogte van pokemon
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     const pokemon = await response.json();
     const types = pokemon.types.map(t => t.type.name).join(', ');
@@ -115,19 +117,22 @@ async function loadPokemonDetail(name) {
   <button id="addFavoriteBtn">Add to favorite</button>
   <p><a href="#pokemons">← Back to list</a></p>
   `;
+  //favorite knop om de sprite en naam door te sturen naar de favorite
   document.getElementById('addFavoriteBtn').addEventListener('click', () => {
     addFavorite({
       name: pokemon.name,
       sprite: pokemon.sprites.front_default
     });
   });
+
+  //zelfde voor pokemon
   } catch (error) {
     app.innerHTML = '<p>Pokémon not found.</p>';
     console.error(error);
   }
 }
 
-function router() {
+function router() {// de router van de pagina
   const hash = window.location.hash.substring(1) || 'home';
 
   if (routes[hash]) {
@@ -143,7 +148,7 @@ function router() {
 window.addEventListener('hashchange', router);
 
 
-window.myFunction = function() {
+window.myFunction = function() { // de zoekfunctie bron vermeld in readme
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
@@ -159,15 +164,15 @@ window.myFunction = function() {
     }
   }
 }
-function getFavorites() {
+function getFavorites() { // getter voor de favorites
   return JSON.parse(localStorage.getItem('favorites')) || [];
 }
 
-function saveFavorites(favorites) {
+function saveFavorites(favorites) {// oplsaan van de favorites
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
-function addFavorite(pokemon) {
+function addFavorite(pokemon) {// favorite toevoegen 
   const favorite = document.getElementById('favorite');
   const favorites = getFavorites();
   if (!favorites.some(p => p.name === pokemon.name)) {
@@ -179,7 +184,7 @@ function addFavorite(pokemon) {
   }
 }
 
-function removeFavorite(name) {
+function removeFavorite(name) {// verwijderen van de favorite
   const favorites = getFavorites().filter(p => p.name !== name);
   saveFavorites(favorites);
   routes.favorites();

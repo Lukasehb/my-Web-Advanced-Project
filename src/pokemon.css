@@ -23,7 +23,8 @@ body {
     color: black;       /* Black text for white area */
     text-align: center;
   }
-  .pokémonfav{
+  .pokémonfav{ /*tekst is anders omdat de favorite onder elkaar komen dus zwarte tekst geeft problemen met de achtergrond het
+     zelfde voor wite tekst. dus ik heb deze stackoverflow gebruikt om de tekst een shaduw te geven zodat het zichtbaar is op het wit en zwart deel van de achtergrond*/
 
   /*https://stackoverflow.com/questions/11323813/how-to-outline-text-in-html-css*/
     color: white;

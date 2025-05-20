@@ -57,7 +57,7 @@ npm install
 Start de ontwikkelserver:
 npm run dev
 
-Open je browser op het aangegeven adres, meestal http://localhost:3000
+Open je browser op het aangegeven adres, meestal http://localhost:5173
 
 Voor productie:
 npm run build en daarna npm run preview
@@ -74,6 +74,9 @@ OpenAI ChatGPT voor codeadvies en uitleg
 
 help with startup of project:
 https://chatgpt.com/share/682c62a1-11cc-800b-8251-548893e3a033
+
+help met gsm versie:
+https://chatgpt.com/share/682c69be-9af0-800b-8f3d-1e62fc976b30
 
 check voor de opdracht:
 https://chatgpt.com/share/682c6150-864c-800b-b4ad-18fbd0b727e1
