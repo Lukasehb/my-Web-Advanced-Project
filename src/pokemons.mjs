@@ -62,7 +62,7 @@ const routes = {
       let html = '<h1>My Favorite Pokémons</h1>';
           app.innerHTML = html;
        if (favorites.length === 0) {
-      html += ' <div class="bottom-section"><p>No favorites yet. <a href="#pokemons">Go catch some!!</p>      </div>';
+      html += ' <div class="bottom-section"><p>No favorites yet. <a href="#pokemons">Go catch some!!</p></div>';
       
       app.innerHTML = html;
       return;
@@ -71,13 +71,20 @@ const routes = {
       favorites.forEach(pokemon => {
         html += `
           <li>
-            <img src="${pokemon.sprite}" alt="${pokemon.name}"> <div class="pokémonfav">${pokemon.name}<div>
+            <img src="${pokemon.sprite}" alt="${pokemon.name}"> 
+            <div class="pokémonfav">${pokemon.name}<div>
   
-          <button onclick="removeFavorite('${pokemon.name}')">Remove from favorites</button>
+          <button class="remove-fav-btn" data-name="${pokemon.name}">Remove from favorites</button>
           </li>`;
       });
       html += '</ul>';
       app.innerHTML = html;
+      document.querySelectorAll('.remove-fav-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const name = e.target.getAttribute('data-name');
+          removeFavorite(name);
+        });
+      });
     }
     } catch (error) {
       app.innerHTML = '<p>Error loading favorite Pokémons.</p>';
@@ -105,12 +112,15 @@ async function loadPokemonDetail(name) {
     <p>Weight: ${pokemon.weight}</p>
     <p id="favorite"> <p>
           </div>
-    <button onclick='addFavorite(${JSON.stringify({
+  <button id="addFavoriteBtn">Add to favorite</button>
+  <p><a href="#pokemons">← Back to list</a></p>
+  `;
+  document.getElementById('addFavoriteBtn').addEventListener('click', () => {
+    addFavorite({
       name: pokemon.name,
       sprite: pokemon.sprites.front_default
-    })})'>Add to favorite</button>
-    <p><a href="#pokemons">← Back to list</a></p>
-  `;
+    });
+  });
   } catch (error) {
     app.innerHTML = '<p>Pokémon not found.</p>';
     console.error(error);
@@ -133,7 +143,7 @@ function router() {
 window.addEventListener('hashchange', router);
 
 
-function myFunction() {
+window.myFunction = function() {
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
@@ -141,8 +151,7 @@ function myFunction() {
   li = ul.getElementsByTagName('li');
 
   for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
+    var txtValue = li[i].textContent || li[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
@@ -159,6 +168,7 @@ function saveFavorites(favorites) {
 }
 
 function addFavorite(pokemon) {
+  const favorite = document.getElementById('favorite');
   const favorites = getFavorites();
   if (!favorites.some(p => p.name === pokemon.name)) {
     favorites.push(pokemon);
@@ -173,9 +183,7 @@ function removeFavorite(name) {
   const favorites = getFavorites().filter(p => p.name !== name);
   saveFavorites(favorites);
   routes.favorites();
-  setTimeout(() => {
-    window.location.hash = "favorites";
-  }, 0);
+  
 }
 
 const mobile = window.matchMedia('(max-width: 768px)');
