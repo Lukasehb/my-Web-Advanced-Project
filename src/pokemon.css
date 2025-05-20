@@ -91,6 +91,49 @@ body {
     display: inline-block;
   }
 
+  /* Responsive tweaks */
+@media (max-width: 768px) {
+    #pokeUL {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets and small screens */
+    }
+  
+    #pokeUL li img {
+      max-width: 80px;
+    }
+  
+    .navigate a {
+      font-size: 1.2rem;
+      margin: 0 0.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #pokeUL {
+      grid-template-columns: 1fr; /* Single column on phones */
+    }
+  
+    #pokeUL li {
+      padding: 10px 6px;
+    }
+  
+    #pokeUL li img {
+      max-width: 60px;
+    }
+  
+    .navigate a {
+      font-size: 1rem;
+      margin: 0 0.3rem;
+    }
+  
+    body {
+      padding: 0 10px; /* add some horizontal padding on small screens */
+    }
+  
+    .top-section, .bottom-section {
+      padding: 1rem;
+    }
+  }
+  
   
   
 

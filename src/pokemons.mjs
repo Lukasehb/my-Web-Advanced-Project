@@ -1,6 +1,6 @@
 "use strict";
-const routes = {
-  home: () => {
+const routes = {  //routes zoals gezien in de voor laatste les van web-advanced
+  home: () => { //home page met links naar de andere pagina's
     document.getElementById('app').innerHTML = `
       <div class="top-section">
         <h1>Home</h1>
@@ -11,17 +11,17 @@ const routes = {
       </div>
     `;
   },
-  pokemons: async () => {
+  pokemons: async () => { //pokemon page waar de api gebruikt word om de naam,id,types en word opgrevraagd om getoond te worden aan de gebruiker
     const app = document.getElementById('app');
     app.innerHTML = '<h1>Loading Pokémons...</h1>';
 
     try {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151'); //hier word de api opgehaald first gen van pokemon
       const data = await response.json();
       const pokemons = data.results;
 
       let html = '<h1>Pokémons</h1>';
-      html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon/type..">';
+      html += '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a pokémon/type..">'; // de search filter bron is vermeld van waar deze komt
       html += '<ul id="pokeUL">';
 
       const detailedPokemons = await Promise.all(
