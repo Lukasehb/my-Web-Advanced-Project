@@ -88,11 +88,29 @@ De broncode is te vinden op:
 https://github.com/Lukasehb/my-Web-Advanced-Project
 
 Screenshots 
+homepage
 ![image](https://github.com/user-attachments/assets/f9a32692-b2ca-4846-82f9-0ec21ced43bf)
 
+pokemonpage
+![image](https://github.com/user-attachments/assets/3ca7c9df-5e3d-4d9e-9f62-951b9cfa26b7)
 
-De repository bevat meerdere commits, waarbij functies en features per onderdeel en regelmatig zijn toegevoegd en aangepast.
+pokemonpage met zoekfilter
+![image](https://github.com/user-attachments/assets/d4eee056-7d63-4a83-8fb6-38bf477fcdec)
+![image](https://github.com/user-attachments/assets/8cba60b2-c143-4420-8a2a-558caa5cd782)
+![image](https://github.com/user-attachments/assets/5dfde8ef-a6ed-4c96-83f4-ca77b522cd75)
 
-Werkende Demo
-Volg de installatiehandleiding om de app lokaal te draaien. Alle functionaliteiten zoals zoeken, favorieten beheren en details bekijken zijn werkend.
+pagina van de pokemon zelf
+![image](https://github.com/user-attachments/assets/55d68c8e-71e1-42b2-bcc5-9c1f3e6c5100)
+
+toegevoegd aan favorite
+![image](https://github.com/user-attachments/assets/458fc1f8-4091-4fe1-8701-874ac299a670)
+![image](https://github.com/user-attachments/assets/c62433a0-399b-4a6c-80d0-a2ed827e4ddd)
+
+favoritepage
+![image](https://github.com/user-attachments/assets/932d25b8-2587-4f2f-a7e2-8412479f20b2)
+verwijderd van favorite
+![image](https://github.com/user-attachments/assets/ed5daf5e-efe6-45d0-b20f-1dfe719eef90)
+lege favoritepage
+![image](https://github.com/user-attachments/assets/02961846-d4e2-4c43-bc54-211edf4099e1)
+
 
