@@ -87,6 +87,10 @@ GitHub Repository
 De broncode is te vinden op:
 https://github.com/Lukasehb/my-Web-Advanced-Project
 
+Screenshots 
+![image](https://github.com/user-attachments/assets/f9a32692-b2ca-4846-82f9-0ec21ced43bf)
+
+
 De repository bevat meerdere commits, waarbij functies en features per onderdeel en regelmatig zijn toegevoegd en aangepast.
 
 Werkende Demo
