@@ -66,7 +66,9 @@ npm run build en daarna npm run preview
 Gebruikte bronnen
 PokéAPI (https://pokeapi.co/)
 
-MDN Web Docs (https://developer.mozilla.org)
+W3sschool (https://www.w3schools.com/howto/howto_js_filter_lists.asp)
+
+Stackoverflow (https://stackoverflow.com/questions/11323813/how-to-outline-text-in-html-css)
 
 Vite (https://vitejs.dev/)
 
